@@ -6,15 +6,14 @@
 var express = require('express')
   , routes = require('./routes')
   , reports = require('./routes/reports')
-  , http = require('http')
   , path = require('path')
   , mongoose = require('mongoose')
   , fs = require('fs')
-  , socket = require('socket.io');
   
-var app = express();
-
-io = socket.listen(app);
+var app = express()
+  , http = require('http')
+  , server = http.createServer(app)
+  , io = require('socket.io').listen(server);
 
 // MongoDB
 mongoose.connect('mongodb://localhost:27017/test');
