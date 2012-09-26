@@ -10,5 +10,6 @@
     "ejs": "*",
     "mongoose" : "*",
     "socket.io" : "*"
-  }
+  },
+  "engine" : "node >= 0.8.0"
 }
