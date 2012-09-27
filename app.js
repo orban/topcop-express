@@ -19,8 +19,8 @@ var app = express()
   , io = require('socket.io').listen(server);
 
 // MongoDB
-//mongoose.connect('mongodb://nodejitsu:a66410a8c7b55a0e240075bdf8411dc6@alex.mongohq.com:10062/nodejitsudb467066459176');
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://nodejitsu:a66410a8c7b55a0e240075bdf8411dc6@alex.mongohq.com:10062/nodejitsudb467066459176');
+//mongoose.connect('mongodb://localhost:27017/test');
 
 Schema = mongoose.Schema;
 
@@ -30,7 +30,7 @@ RatingObj = new Schema({
     rating: String,
     comment: String,
     location: {},
-    coord: {type: [Number], index: '2d'}
+    coords: {type: [Number], index: '2d'}
 });
   
 Rating = mongoose.model('Rating', RatingObj);

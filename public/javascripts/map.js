@@ -21,6 +21,7 @@ $(document).ready(function() {
       var radius = e.accuracy / 2;
 
       var uMarker = new L.Marker(e.latlng);
+      console.log(e.latlng);
       map.addLayer(uMarker);
       uMarker.bindPopup("U-R-Here!").openPopup();
 
