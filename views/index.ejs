@@ -45,6 +45,7 @@
 
     <header>
         <span><img id="header-logo" src="images/logo.png" alt=""></span>
+        <a href="#report-page" class="btn-inverse">Report</a>
     </header>
 
     <div id="wrapper">
@@ -52,7 +53,48 @@
       
         <div id="pages">
 
-          <div id="report-page">
+          <div id="reviews-page">
+            <h1><%= title %></h1>
+            <p>Welcome to <%= title %></p>
+            <table class="table table-hover">
+            <thead>
+              <tr><td>Badge #</td><td>Rating</td><td>Comments</td></tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i<ratings.length; i++) {%>
+              <tr><td><%= ratings[i].badge %></td><td><%= ratings[i].rating %></td><td><%= ratings[i].comment %></td></tr>
+              <% } %>
+            </tbody>
+            </ul>
+
+          </div>
+          <div id='report-page'>
+
+            <h1><%= title %></h1>
+            <p>Welcome to <%= title %></p>
+            <form name="submitRating" id="submitRating" method="POST" action="/">
+            <legend>Submit a rating...</legend>
+            <label>Badge Number</label>
+            <input type="text" placeholder="Type something…" value="badge">
+            <span class="help-block">Example block-level help text here.</span>
+            <label>Rating</label>
+            <select>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            </select>
+            <label>Comment</label>
+            <input type="text" placeholder="Type something…" value="comment">
+            <span class="help-block">Example block-level help text here.</span>
+        
+            <label class="checkbox">
+            <input type="checkbox"> Include location
+            </label>
+            <button type="submit" class="btn">Submit</button>
+            </form>
+
           </div>
           
           <div id="map-page" class="current">
@@ -69,7 +111,7 @@
     <footer>
       <ul id="tab-bar">
         <li>
-          <a href="#report-page" class="btn-inverse">Report</a>
+          <a href="#reviews-page" class="btn-inverse">Reviews</a>
         </li>
         <li>
           <a href="#map-page" class="btn-inverse active">Map</a>

@@ -15,6 +15,18 @@
     //2- add form validations? (jquery)
     //3- if valid, submit the form - $.post()
 
+            $(document).ready(function(){
+                $("#submitRating").submit( function () {    
+                  $.post(
+                   'form',
+                    $(this).serialize(),
+                    function(data){
+                      $("#results").html(data)
+                    }
+                  );
+                  return false;   
+                });   
+            });
 })();
 
 
