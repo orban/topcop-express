@@ -15,7 +15,7 @@ exports.submit = function (req, res){
 	badge: req.body.badge,
 	rating: req.body.rating,
 	comment: req.body.comment,
-	coord:  req.body.coord
+	coords:  req.body.coords
   });
   rating.save(function (err) {
 	if (!err) {
