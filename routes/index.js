@@ -14,3 +14,17 @@ exports.display = function(err, res) {
         }
     });
 };
+
+exports.nearPlaces = function(req, res) {
+    var geo = req.query.coords.split(',');
+    var Rating = mongoose.model('Rating');
+    var rating = new Rating({coords: geo});
+    rating.findNear(
+        function(err, res) {
+            if (!err) {
+                res.json(res);
+            } else {
+                console.log(err);
+            }
+        });
+};

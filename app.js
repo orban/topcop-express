@@ -30,10 +30,14 @@ RatingObj = new Schema({
     rating: String,
     comment: String,
     location: {},
-    coord: {}
+    coord: {type: [Number], index: '2d'}
 });
   
 Rating = mongoose.model('Rating', RatingObj);
+
+RatingObj.method.findNear = function(cb) {
+  return this.model('Rating').find({coord: {$nearSphere: this.coord, $maxDistance: 0.01} }, cb);
+}
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
