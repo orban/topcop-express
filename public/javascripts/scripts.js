@@ -18,25 +18,30 @@
 
 
 
- (function() {
+(function() {
+  $(document).ready(function(){
+    $("submitRating").on('submit', function(e) {
+      // disable default action
+      e.preventDefault();
+      var formdata = $(this).serialize();
+      if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition( function (pos){
+          formdata[coords]=JSON.stringify({'lat':pos.coords.latitude,'long':pos.coords.longitude});
+        }
+      }
 
- $(document).ready(function(){
-     $("submitRating").on('submit', function(e) {
+      console.log("posting the following form data:");
+      console.log(formdata);
 
-
-      $.post( 'form', $(this).serialize(), function(data) {
-         $("#results").html(data)
-       });
-      
-       // disable default action
-       e.preventDefault();
-     
-
-     });
-  
-   });
-
- })(); 
+      $.post( '/form', formdata, function(data) {
+        console.log("your results:");
+        console.log(data);
+      });
+      $('#myModal').modal('hide');
+      return false;   
+    });
+  });
+})(); 
 
 
 
