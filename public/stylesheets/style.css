@@ -49,12 +49,21 @@ footer {
   text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
 }
 
+span#report-button {
+  margin-right: 6px;
+
+}
+
 #wrapper {
   /*background: red;*/
   /*position:static;*/
   z-index:1;
   width:100%;
   overflow: hidden;
+}
+
+.modal {
+
 }
 
 #main-content {
@@ -80,7 +89,7 @@ footer {
   display: block; 
 }
 
-#report-page {
+#reviews-page {
   background: url(../images/brillant.png) center center;
   height: 100%
 }

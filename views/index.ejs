@@ -45,16 +45,18 @@
 
     <header>
         <span><img id="header-logo" src="images/logo.png" alt=""></span>
-        <a href="#report-page" class="btn-inverse">Report</a>
+        <span id="report-button" class="pull-right"><a href="#myModal" role="button" class="btn" data-toggle="modal" data-target="#myModal">Report</a></span>
     </header>
 
     <div id="wrapper">
       
-      <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           <h3 id="myModalLabel">Submit Report</h3>
         </div>
+        
         <div class="modal-body">
             
           <form name="submitRating" id="submitRating" method="POST" action="/">
@@ -80,34 +82,29 @@
           </form>
         
         </div>
+        
         <div class="modal-footer">
           <button class="btn btn-primary">Submit</button>
         </div>
+      
       </div> <!-- end .modal -->
+
+      
 
       <div id="main-content">
 
         <div id="pages">
 
           <div id="reviews-page">
-            <table class="table table-hover">
-            <thead>
-              <tr><td>Badge #</td><td>Rating</td><td>Comments</td></tr>
-            </thead>
-            <tbody>
-              <% for(var i=0; i<ratings.length; i++) {%>
-              <tr><td><%= ratings[i].badge %></td><td><%= ratings[i].rating %></td><td><%= ratings[i].comment %></td></tr>
-              <% } %>
-            </tbody>
-            </ul>
-          </div>
+            
+          </div> <!-- end #reviews-page -->
         
           
           <div id="map-page" class="current">
             
             <div id="map"></div>
 
-          </div>
+          </div> <!-- end #map-page -->
 
         </div>
 

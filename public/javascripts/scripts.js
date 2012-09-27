@@ -15,18 +15,19 @@
     //2- add form validations? (jquery)
     //3- if valid, submit the form - $.post()
 
-            $(document).ready(function(){
-                $("#submitRating").submit( function () {    
-                  $.post(
-                   'form',
-                    $(this).serialize(),
-                    function(data){
-                      $("#results").html(data)
-                    }
-                  );
-                  return false;   
-                });   
-            });
+  $(document).ready(function(){
+      $("#submitRating").submit( function () {    
+        $.post(
+         'form',
+          $(this).serialize(),
+          function(data){
+            $("#results").html(data)
+          }
+        );
+        return false;   
+      });   
+  });
+
 })();
 
 
@@ -63,15 +64,13 @@
 })();
 
 
-/* Modal:
+// modal
 
-*/
+// $('#myModal').modal({
+//   keyboard: true,
+//   backdrop: true,
+//   show: false,
+//   fade: true
+// })
 
-$('#myModal').modal({
-  keyboard: true,
-  backdrop: true,
-  show: false,
-  fade: true
-})
-
-$('#myModal').modal('toggle')
+// $('#myModal').modal('toggle')
