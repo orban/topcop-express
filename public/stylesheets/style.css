@@ -49,9 +49,22 @@ footer {
   text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
 }
 
-span#report-button {
-  margin-right: 6px;
+span#report-button-wrap {
+  position: absolute;
+  right: 6px;
+}
 
+a#report-button {
+  margin-bottom: 6px;
+  padding: 8px 14px;
+  background: url(../images/denim.png) center center;
+  /*background-color: #474747;*/
+  color: #222;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  text-shadow: 0px 2px 3px #555;
+  border: 1px solid #111;
 }
 
 #wrapper {
