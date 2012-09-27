@@ -15,44 +15,28 @@
 
 
 // custom scripts
-(function() {
-
-  $(document).ready(function(){
-      $("#submitRating").submit( function () {    
-        $.post(
-         'form',
-          $(this).serialize(),
-          function(data){
-            $("#results").html(data)
-          }
-        );
-        return false;   
-      });   
-  });
-
-})();
 
 
-// laci's attempt
-// (function() {
 
-//   $(document).ready(function(){
-//     $("submitRating").on('submit', function(e) {
+ (function() {
+
+ $(document).ready(function(){
+     $("submitRating").on('submit', function(e) {
 
 
-//       $.post( 'form', $(this).serialize(), function(data) {
-//         $("#results").html(data)
-//       });
+      $.post( 'form', $(this).serialize(), function(data) {
+         $("#results").html(data)
+       });
       
-//       // disable default action
-//       e.preventDefault();
+       // disable default action
+       e.preventDefault();
      
 
-//     });
+     });
   
-//   });
+   });
 
-// })(); 
+ })(); 
 
 
 
