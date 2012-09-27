@@ -14,8 +14,6 @@ $(document).ready(function() {
 
   // add geolocation
 
-  // map.locate({setView: true, maxZoom: 12});
-
   map.on('locationfound', onLocationFound);
   map.on('locationerror', onLocationError);
 
@@ -32,10 +30,8 @@ $(document).ready(function() {
       var uCircle = new L.Circle(e.latlng, radius);
       map.addLayer(uCircle);
       uCircle.bindPopup("You are within " + radius + " meters from this point")
-      
 
   }
-
 
   function onLocationError(e) {
       alert(e.message);
