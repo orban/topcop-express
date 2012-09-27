@@ -1,4 +1,33 @@
 // custom scripts
+(function() {
+
+  //TODO: onload, pull all the past reviews
+    //1- create a list view of each review (sort by date?)
+    //2- add an onclick to each list item 
+    //3- add a map marker for each review
+    //4- add an onclick to each map item 
+    //5- paginate the reviews (scalability)
+      //a- pull 10 provide an endless scroll feature to the list view
+      //b- search by location to pull more events in the map view
+
+  //TODO: build out the review submittal form:
+    //1- show the review modal when the 'review' button is pressed
+    //2- add form validations? (jquery)
+    //3- if valid, submit the form - $.post()
+
+            $(document).ready(function(){
+                $("#submitRating").submit( function () {    
+                  $.post(
+                   'form',
+                    $(this).serialize(),
+                    function(data){
+                      $("#results").html(data)
+                    }
+                  );
+                  return false;   
+                });   
+            });
+})();
 
 
 // pager
