@@ -15,44 +15,33 @@
 
 
 // custom scripts
+
+
+
 (function() {
-
   $(document).ready(function(){
-      $("#submitRating").submit( function () {    
-        $.post(
-         'form',
-          $(this).serialize(),
-          function(data){
-            $("#results").html(data)
-          }
-        );
-        return false;   
-      });   
+    $("submitRating").on('submit', function(e) {
+      // disable default action
+      e.preventDefault();
+      var formdata = $(this).serialize();
+      if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition( function (pos){
+          formdata[coords]=JSON.stringify({'lat':pos.coords.latitude,'long':pos.coords.longitude});
+        });
+      }
+
+      console.log("posting the following form data:");
+      console.log(formdata);
+
+      $.post( '/form', formdata, function(data) {
+        console.log("your results:");
+        console.log(data);
+      });
+      $('#myModal').modal('hide');
+      return false;   
+    });
   });
-
-})();
-
-
-// laci's attempt
-// (function() {
-
-//   $(document).ready(function(){
-//     $("submitRating").on('submit', function(e) {
-
-
-//       $.post( 'form', $(this).serialize(), function(data) {
-//         $("#results").html(data)
-//       });
-      
-//       // disable default action
-//       e.preventDefault();
-     
-
-//     });
-  
-//   });
-
-// })(); 
+})(); 
 
 
 
