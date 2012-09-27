@@ -60,4 +60,18 @@
 	  fromPage.addClass("fade out");
 	}
 
-})();		
+})();
+
+
+/* Modal:
+
+*/
+
+$('#myModal').modal({
+  keyboard: true,
+  backdrop: true,
+  show: false,
+  fade: true
+})
+
+$('#myModal').modal('toggle')

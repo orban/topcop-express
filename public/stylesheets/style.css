@@ -165,7 +165,7 @@ a.active {
   color: #333333;
   text-decoration: none;
   background-color: #e6e6e6;
-  background-position: 0 -15px;
+  background-position: 0 -50px;
   -webkit-transition: background-position 0.1s linear;
   -moz-transition: background-position 0.1s linear;
   -ms-transition: background-position 0.1s linear;
