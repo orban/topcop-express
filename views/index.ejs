@@ -96,18 +96,24 @@
 
         <div id="pages">
 
+
           <div id="reviews-page">
 
-            <table id="" class="table table-hover">
-              <thead>
-                <tr><td>Badge #</td><td>Rating</td><td>Comments</td></tr>
-              </thead>
-              <tbody>
-                <% for(var i=0; i<ratings.length; i++) {%>
-                <tr><td><%= ratings[i].badge %></td><td><%= ratings[i].rating %></td><td><%= ratings[i].comment %></td></tr>
-                <% } %>
-              </tbody>
-            </table>
+
+            <div id="list-wrap">
+            <div class="h-divider"></div>
+
+              <table class="table table-hover">
+                <thead>
+                  <tr><td>Badge #</td><td>Rating</td><td>Comments</td></tr>
+                </thead>
+                <tbody>
+                  <% for(var i=0; i<ratings.length; i++) {%>
+                  <tr><td><%= ratings[i].badge %></td><td><%= ratings[i].rating %></td><td><%= ratings[i].comment %></td></tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div><!-- end #list-wrap -->
             
           </div> <!-- end #reviews-page -->
         

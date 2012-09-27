@@ -11,11 +11,15 @@ $(document).ready(function() {
   });
   map.addLayer(layer);
 
+
   // add geolocation
+
+  // map.locate({setView: true, maxZoom: 12});
+
   map.on('locationfound', onLocationFound);
   map.on('locationerror', onLocationError);
 
-  map.locateAndSetView();
+  map.locate({setView: true, maxZoom: 12});
 
   function onLocationFound(e) {
       var radius = e.accuracy / 2;
