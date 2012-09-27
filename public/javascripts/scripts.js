@@ -27,7 +27,7 @@
       if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition( function (pos){
           formdata[coords]=JSON.stringify({'lat':pos.coords.latitude,'long':pos.coords.longitude});
-        }
+        });
       }
 
       console.log("posting the following form data:");
