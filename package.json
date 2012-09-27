@@ -1,15 +1,18 @@
 {
-  "name": "TopCop",
-  "version": "0.0.1",
+  "version": "0.0.1-2",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "app.js"
   },
   "dependencies": {
     "express": "3.0.0rc4",
     "ejs": "*",
-    "mongoose" : "*",
-    "socket.io" : "*"
+    "mongoose": "*",
+    "socket.io": "*"
   },
-  "engine" : "node >= 0.8.0"
+  "subdomain": "ryanorban.topcop-express",
+  "engines": {
+    "node": "0.8.x"
+  },
+  "name": "topcop-express"
 }

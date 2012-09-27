@@ -3,6 +3,14 @@
  * GET dashboard page.
  */
 
-exports.index = function(req, res){
-  res.render('dashboard', { title: 'TopCop Dashboard' });
+exports.display = function(err, res) {
+    return Rating.find(function (err, returnedRatings) {
+        if (!err) {
+            res.render( 'dashboard',
+                        {title: "TopCop Dashboard",
+                        ratings: returnedRatings})
+        } else {
+            return console.log(err);
+        }
+    });  
 };
