@@ -49,30 +49,15 @@
     </header>
 
     <div id="wrapper">
-      <div id="main-content">
       
-        <div id="pages">
-
-          <div id="reviews-page">
-            <h1><%= title %></h1>
-            <p>Welcome to <%= title %></p>
-            <table class="table table-hover">
-            <thead>
-              <tr><td>Badge #</td><td>Rating</td><td>Comments</td></tr>
-            </thead>
-            <tbody>
-              <% for(var i=0; i<ratings.length; i++) {%>
-              <tr><td><%= ratings[i].badge %></td><td><%= ratings[i].rating %></td><td><%= ratings[i].comment %></td></tr>
-              <% } %>
-            </tbody>
-            </ul>
-
-          </div>
-          <div id='report-page'>
-
-            <h1><%= title %></h1>
-            <p>Welcome to <%= title %></p>
-            <form name="submitRating" id="submitRating" method="POST" action="/">
+      <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 id="myModalLabel">Submit Report</h3>
+        </div>
+        <div class="modal-body">
+            
+          <form name="submitRating" id="submitRating" method="POST" action="/">
             <legend>Submit a rating...</legend>
             <label>Badge Number</label>
             <input type="text" placeholder="Type something…" value="badge">
@@ -93,9 +78,22 @@
             <input type="checkbox"> Include location
             </label>
             <button type="submit" class="btn">Submit</button>
-            </form>
+          </form>
+        
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary">Submit</button>
+        </div>
+      </div> <!-- end .modal -->
 
+      <div id="main-content">
+
+        <div id="pages">
+
+          <div id="reviews-page">
+            
           </div>
+        
           
           <div id="map-page" class="current">
             
