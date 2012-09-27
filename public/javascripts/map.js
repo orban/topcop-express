@@ -11,11 +11,13 @@ $(document).ready(function() {
   });
   map.addLayer(layer);
 
+
   // add geolocation
+
   map.on('locationfound', onLocationFound);
   map.on('locationerror', onLocationError);
 
-  map.locateAndSetView();
+  map.locate({setView: true, maxZoom: 12});
 
   function onLocationFound(e) {
       var radius = e.accuracy / 2;
@@ -28,10 +30,8 @@ $(document).ready(function() {
       var uCircle = new L.Circle(e.latlng, radius);
       map.addLayer(uCircle);
       uCircle.bindPopup("You are within " + radius + " meters from this point")
-      
 
   }
-
 
   function onLocationError(e) {
       alert(e.message);

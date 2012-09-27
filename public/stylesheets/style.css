@@ -63,7 +63,7 @@ a#report-button {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  text-shadow: 0px 2px 3px #555;
+  text-shadow: 0px 1px 2px #777;
   border: 1px solid #111;
 }
 
@@ -104,7 +104,31 @@ a#report-button {
 
 #reviews-page {
   background: url(../images/brillant.png) center center;
-  height: 100%
+  height: 100%;
+  overflow: hidden;
+}
+
+div.h-divider {
+  width: 100%;
+  height: 1px;
+  /*background: red;*/
+  border-bottom: 1px solid #ffffff;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+#list-wrap {
+  margin: 170px auto;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  overflow: auto;
+  
+}
+
+.table {
+  /*text-align: center;*/
 }
 
 #map-page {
