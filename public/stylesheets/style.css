@@ -1,5 +1,8 @@
 /*custom styles*/
 
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+
+
 html, body, #wrapper, #main-content, #pages {
   height: 100%;
 }
@@ -106,6 +109,7 @@ a#report-button {
   background: url(../images/brillant.png) center center;
   height: 100%;
   overflow: hidden;
+  text-align: center;
 }
 
 div.h-divider {
@@ -113,13 +117,26 @@ div.h-divider {
   height: 1px;
   /*background: red;*/
   border-bottom: 1px solid #ffffff;
-  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+#text-logo-wrap {
+  position: absolute;
+  top: 130px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#text-logo {
+  font-family: 'Bree Serif', serif;
+  font-size: 3em;
+  color: white;
+  text-shadow: 0 1px 6px rgba(0, 0, 0,.75);
 }
 
 #list-wrap {
-  margin: 170px auto;
+  margin: 185px auto;
   width: 100%;
   height: 100%;
   background-color: white;
@@ -127,8 +144,8 @@ div.h-divider {
   
 }
 
-.table {
-  /*text-align: center;*/
+td:first-child {
+  padding-left: 30px;
 }
 
 #map-page {
