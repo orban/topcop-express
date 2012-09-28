@@ -20,12 +20,24 @@
 
 (function() {
   var submit_topcop_review = function(){
-    var formdata = $(this).serialize();
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition( function (pos){
-        formdata['coords']=JSON.stringify({'lat':pos.coords.latitude,'long':pos.coords.longitude});
+    var get_form_fields_as_array = function(){
+      var params={};
+      $('#submitRating input').each(function(x,field){
+        if($(this).attr('id') == 'location'){ //&& $(this).is('checked') ){
+          if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition( function (pos){
+              params['coords']={'lat':pos.coords.latitude,'long':pos.coords.longitude};
+            });
+          }
+        }else{
+          params[$(this).attr('id')] = $(this).val();
+        }
       });
-    }
+      return params;
+    };
+    
+    //var formdata =  $('#submitRating').serialize();
+    var formdata = get_form_fields_as_array();
 
     console.log("posting the following form data:");
     console.log(formdata);
