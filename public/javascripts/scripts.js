@@ -22,7 +22,7 @@
   var submit_topcop_review = function(){
     var get_form_fields_as_array = function(){
       var params={};
-      $('#submitRating input').each(function(x,field){
+      $('#submitRating :input').each(function(x,field){
         if($(this).attr('id') == 'location'){ //&& $(this).is('checked') ){
           if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition( function (pos){
