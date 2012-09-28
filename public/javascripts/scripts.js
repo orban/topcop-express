@@ -19,26 +19,29 @@
 
 
 (function() {
+  var submit_topcop_review = function(){
+    var formdata = $(this).serialize();
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition( function (pos){
+        formdata['coords']=JSON.stringify({'lat':pos.coords.latitude,'long':pos.coords.longitude});
+      });
+    }
+
+    console.log("posting the following form data:");
+    console.log(formdata);
+
+    $.post( '/form', formdata, function(data) {
+      console.log("your results:");
+      console.log(data);
+    });
+    $('#myModal').modal('hide');
+    return false;   
+  };
+  window.submit_topcop_review = submit_topcop_review;
   $(document).ready(function(){
     $("submitRating").on('submit', function(e) {
-      // disable default action
       e.preventDefault();
-      var formdata = $(this).serialize();
-      if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition( function (pos){
-          formdata[coords]=JSON.stringify({'lat':pos.coords.latitude,'long':pos.coords.longitude});
-        });
-      }
-
-      console.log("posting the following form data:");
-      console.log(formdata);
-
-      $.post( '/form', formdata, function(data) {
-        console.log("your results:");
-        console.log(data);
-      });
-      $('#myModal').modal('hide');
-      return false;   
+      return window.submit_topcop_review();
     });
   });
 })(); 
