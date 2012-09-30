@@ -23,26 +23,34 @@ $(document).ready(function() {
       var radius = e.accuracy / 2;
 
       var uMarker = new L.Marker(e.latlng);
-      console.log(e.latlng);
       map.addLayer(uMarker);
-      uMarker.bindPopup("U-R-Here!").openPopup();
-
+      uMarker.bindPopup("Current Location").openPopup();
       var uCircle = new L.Circle(e.latlng, radius);
       map.addLayer(uCircle);
       uCircle.bindPopup("You are within " + radius + " meters from this point")
-
-  }
+      
+      $.post("/geo", {coords: {long: e.latlng.lng, lat: e.latlng.lat  }}, function(result) {
+          for (var key in result) {
+            if (result.hasOwnProperty(key)) {
+              var LAT = result[key].coords.lat;
+              var LONG = result[key].coords.long;
+              console.log("Adding map marker: LAT: " + LAT + " LONG: " + LONG);
+              L.marker(new L.LatLng(LAT, LONG)).bindPopup(result[key].comment).openPopup().addTo(map);
+            };
+          };
+        });
+    };
 
   function onLocationError(e) {
       alert(e.message);
-  }
-
-
-
+  };
+  
 
 });
 
 
+//        $.each(data, function(key, values) {
+//          console.log("key: " + key + " values: " + values);
 
 
 // var map;

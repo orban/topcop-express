@@ -3,12 +3,15 @@
  * Module dependencies.
  */
 
+var debug = false;
+
 var express = require('express')
   , routes = require('./routes')
   , index = require('./routes/index')
   , reports = require('./routes/reports')
   , dashboard = require('./routes/dashboard')
   , form = require('./routes/form')
+  , geo = require('./routes/geo')
   , path = require('path')
   , mongoose = require('mongoose')
   , fs = require('fs')
@@ -30,14 +33,17 @@ RatingObj = new Schema({
     rating: String,
     comment: String,
     location: {},
-    coords: {lat: Number, long: Number}
+    coords: {long: Number, lat: Number}
 });
-  
+
+RatingObj.statics.findNearStatic = function(coords, cb) {
+  this.find({coords: {$nearSphere: coords, $maxDistance: 5}}, cb);
+}
+
+
 Rating = mongoose.model('Rating', RatingObj);
 
-RatingObj.method.findNear = function(cb) {
-  return this.model('Rating').find({coord: {$nearSphere: this.coord, $maxDistance: 0.01} }, cb);
-}
+
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -60,7 +66,9 @@ app.get('/api/reports', reports.list);
 app.get('/dashboard', dashboard.display);
 app.get('/form', form.form);
 app.post('/form', form.submit);
+app.post('/geo', geo.findNearby);
 
+if (debug) {
 var request = require('request');
 request.post({
   url: 'http://localhost:3000/form',
@@ -68,15 +76,15 @@ request.post({
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    badge: 324,
-    rating: 4,
-    comment: "Best cop ever!",
-    coords: {lat: 128.00, long: 90.00}
+    badge: 419,
+    rating: 5,
+    comment: "Cop directed traffic at broken spotlight for 6 straight hours.",
+    coords: {long: -122.2719461 , lat: 37.8052615}
   })
 }, function(error, response, body){
   console.log(body);
 });
-
+};
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
