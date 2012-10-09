@@ -40,6 +40,9 @@ RatingObj.statics.findNearStatic = function(coords, cb) {
   this.find({coords: {$nearSphere: coords, $maxDistance: 5}}, cb);
 }
 
+RatingObj.statics.findAllStatic = function(cb) {
+  this.find("", cb);
+}
 
 Rating = mongoose.model('Rating', RatingObj);
 
@@ -67,6 +70,7 @@ app.get('/dashboard', dashboard.display);
 app.get('/form', form.form);
 app.post('/form', form.submit);
 app.post('/geo', geo.findNearby);
+app.get('/geo', geo.findAll);
 
 if (debug) {
 var request = require('request');

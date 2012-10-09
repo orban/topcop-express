@@ -19,6 +19,19 @@ $(document).ready(function() {
 
   map.locate({setView: true, maxZoom: 12});
 
+
+  $.get("/geo", function(result) {
+    for (var key in result) {
+      if (result.hasOwnProperty(key)) {
+        var LAT = result[key].coords.lat;
+        var LONG = result[key].coords.long;
+        L.marker(new L.LatLng(LAT, LONG)).bindPopup(result[key].comment).openPopout().addTo(map);
+      }
+    }
+  });
+  
+  
+
   function onLocationFound(e) {
       var radius = e.accuracy / 2;
 
@@ -28,7 +41,8 @@ $(document).ready(function() {
       var uCircle = new L.Circle(e.latlng, radius);
       map.addLayer(uCircle);
       uCircle.bindPopup("You are within " + radius + " meters from this point")
-      
+
+ 
       $.post("/geo", {coords: {long: e.latlng.lng, lat: e.latlng.lat  }}, function(result) {
           for (var key in result) {
             if (result.hasOwnProperty(key)) {
@@ -39,13 +53,13 @@ $(document).ready(function() {
             };
           };
         });
-    };
+  };
+    
 
   function onLocationError(e) {
       alert(e.message);
   };
   
-
 });
 
 
