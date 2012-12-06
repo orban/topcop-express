@@ -11,11 +11,12 @@ exports.submit = function (req, res){
   var rating;
   console.log("POST: ");
   console.log(req.body);
+  coords = req.body.coords.split(",");
   rating = new Rating({
 	badge: req.body.badge,
 	rating: req.body.rating,
 	comment: req.body.comment,
-	coords:  req.body.coords
+	coords:  {lat: coords[0], long: coords[1]}
   });
   rating.save(function (err) {
 	if (!err) {

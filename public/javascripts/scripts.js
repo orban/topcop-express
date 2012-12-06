@@ -13,54 +13,6 @@
   //3- if valid, submit the form - $.post()
 
 
-
-// custom scripts
-
-
-
-(function() {
-  var submit_topcop_review = function(){
-    var get_form_fields_as_array = function(){
-      var params={};
-      $('#submitRating :input').each(function(x,field){
-        if($(this).attr('id') == 'location'){ //&& $(this).is('checked') ){
-          if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition( function (pos){
-              params['coords']={'lat':pos.coords.latitude,'long':pos.coords.longitude};
-              console.log(params);
-            });
-          }
-        }else{
-          params[$(this).attr('id')] = $(this).val();
-        }
-      });
-      return params;
-    };
-    
-    //var formdata =  $('#submitRating').serialize();
-    var formdata = get_form_fields_as_array();
-
-    console.log("posting the following form data:");
-    console.log(formdata);
-
-    $.post( '/form', formdata, function(data) {
-      console.log("your results:");
-      console.log(data);
-    });
-    $('#myModal').modal('hide');
-    return false;   
-  };
-  window.submit_topcop_review = submit_topcop_review;
-  $(document).ready(function(){
-    $("submitRating").on('submit', function(e) {
-      e.preventDefault();
-      return window.submit_topcop_review();
-    });
-  });
-})(); 
-
-
-
 // pager
 (function() {
 

@@ -1,5 +1,5 @@
 var map;
-
+var coords;
 $(document).ready(function() {
 
   
@@ -22,6 +22,7 @@ $(document).ready(function() {
   function onLocationFound(e) {
       var radius = e.accuracy / 2;
       var curLocation = e.latlng;
+      coords = curLocation;
       var curLatitude = curLocation.lat;
       var curLongitude = curLocation.lng;
       

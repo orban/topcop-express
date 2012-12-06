@@ -35,6 +35,8 @@
     <link href="stylesheets/style.css" rel="stylesheet">
     
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.ie.css" />
     <![endif]-->
@@ -44,6 +46,23 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+            $(document).ready(function(){
+                $("#submitRating").submit( function () {
+                 var data = $(this).serialize();
+                 data += "&coords=" + coords.lng + "," + coords.lat;    
+                  $.post(
+                   'form',
+                    data,
+                    function(data){
+                      $("#results").html(data)
+                    }
+                  );
+                  $('#myModal').modal('hide');
+                  return false;   
+                }); 
+            });
+    </script>
   </head>
 
   <body>
@@ -63,9 +82,9 @@
           <h3 id="myModalLabel">Submit Report</h3>
         </div>
         
+        
         <div class="modal-body">
-            
-          <form name="submitRating" id="submitRating" method="POST" action="/form">
+        <form name="submitRating" id="submitRating" method="post" action="/form">
             <label>Badge Number</label>
             <input type="text" id="badge" name="badge">
             <label>Rating</label>
@@ -78,15 +97,13 @@
             </select>
             <label>Comment</label>
             <input id="comment" type="text" id="comment" name="comment">
-            </label>
-          </form>
-        
+            <input id='submit-button' class="btn btn-primary" type="submit" value="Submit">
+
         </div>
         
         <div class="modal-footer">
-          <button id='submit-button' class="btn btn-primary" data-dismiss="modal" onclick="window.submit_topcop_review();">Submit</button>
-        </div>
-      
+                    </div>
+        </form>
       </div> <!-- end .modal -->
 
       
